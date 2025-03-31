@@ -53,6 +53,16 @@ public class MathController {
         return (covertToDouble(numberOne) + covertToDouble(numberTwo)) / 2;
     } 
 
+
+    @RequestMapping(value="/sqr/{number}", method=RequestMethod.GET)
+    public Double sqr(@PathVariable("number") String number
+                      ) throws Exception {
+        if (!isNumeric(number)) 
+            throw new UnsupporteMathOperationException("Please set a numeric value!");
+        return Math.sqrt(covertToDouble(number));
+    } 
+
+
     
     public static Double covertToDouble(String strNumber) {
         if (strNumber == null) return 0d; 
